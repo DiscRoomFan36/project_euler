@@ -33,7 +33,6 @@ done
 BUILD_STRING="
 ${BUILD_STRING} fn main(){
 	println!(\"Starting Euler!!!\");
-	println!(\"--------------------\");
 	let mut results = Vec::new();	
 	let start = Instant::now();
 "
@@ -74,11 +73,13 @@ done
 BUILD_STRING="${BUILD_STRING}
     let end = Instant::now();
 
+	println!(\"----------------------\");
+
     for (i, (result, dur)) in results.iter().enumerate() {
-        println!(\"{}: {result:<15} | Time: {dur:?}\", i + 1);
+        println!(\"{:>3}: {result:<15} | Time: {dur:?}\", i + 1);
     }
 
-    println!(\"--------------------\");
+    println!(\"----------------------\");
     println!(\"Total Time: {:?}\", end.duration_since(start));
 }
 
