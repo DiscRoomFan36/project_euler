@@ -2,22 +2,20 @@
 
 type Int = u32;
 
-fn is_divisible(max: Int, number: Int) -> bool {
-    for div in 2..=max {
-        if number % div != 0 {
-            return false;
-        }
+fn lcm(a: Int, b: Int) -> Int {
+    let (mut ap, mut bp) = (a, b);
+    while bp != 0 {
+        (ap, bp) = (bp, ap % bp)
     }
-    return true;
+    return (a / ap) * b;
 }
 
 fn solve_problem(max: Int) -> Int {
-    let mut checking = max * (max - 1);
-    while !is_divisible(max, checking) {
-        // skip by max, it must divide by max
-        checking += max;
+    let mut num = lcm(1, 2);
+    for n in 3..=max {
+        num = lcm(num, n)
     }
-    return checking;
+    return num;
 }
 
 pub fn main() -> Int {
