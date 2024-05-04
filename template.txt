@@ -1,0 +1,21 @@
+// PROBLEM_NAME: https://projecteuler.net/problem=N
+
+type Int = u32;
+
+fn solve_problem(input_param: Int) -> Int {
+    todo!()
+}
+
+pub fn main() -> Int {
+    solve_problem(420)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn solves_test() {
+        assert_eq!(solve_problem(69), 80085)
+    }
+}
