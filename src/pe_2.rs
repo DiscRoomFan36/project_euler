@@ -1,4 +1,4 @@
-// Even Fibonacci Numbers
+// Even Fibonacci Numbers: https://projecteuler.net/problem=2
 
 fn solve_problem(max: u32) -> u32 {
     let mut a = 1;

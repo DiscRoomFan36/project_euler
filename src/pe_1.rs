@@ -1,4 +1,4 @@
-// Multiples of 3 or 5
+// Multiples of 3 or 5: https://projecteuler.net/problem=1
 
 fn get_multiples_3_5(max: u32) -> u32 {
     (3..max).filter(|n| (n % 3 == 0) || (n % 5 == 0)).sum()
