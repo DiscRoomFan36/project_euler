@@ -55,21 +55,19 @@ fn get_run(
 fn solve_problem(grid: &[Int], grid_size: (usize, usize)) -> Int {
     let (rows, cols) = grid_size;
 
-    let left_right =
-        (0..rows).flat_map(|x| (0..cols).map(move |y| get_run(grid, grid_size, (x, y), (1, 0))));
-
-    let up_down =
-        (0..rows).flat_map(|x| (0..cols).map(move |y| get_run(grid, grid_size, (x, y), (0, 1))));
-
-    let diag_down =
-        (0..rows).flat_map(|x| (0..cols).map(move |y| get_run(grid, grid_size, (x, y), (1, 1))));
-
-    let diag_up =
-        (0..rows).flat_map(|x| (0..cols).map(move |y| get_run(grid, grid_size, (x, y), (1, -1))));
-
-    let all_iters = left_right.chain(up_down).chain(diag_down).chain(diag_up);
-
-    all_iters.max().unwrap()
+    (0..rows)
+        .flat_map(|x| {
+            (0..cols).flat_map(move |y| {
+                [
+                    get_run(grid, grid_size, (x, y), (1, 0)),
+                    get_run(grid, grid_size, (x, y), (0, 1)),
+                    get_run(grid, grid_size, (x, y), (1, 1)),
+                    get_run(grid, grid_size, (x, y), (1, -1)),
+                ]
+            })
+        })
+        .max()
+        .unwrap()
 }
 
 pub fn main() -> Int {
