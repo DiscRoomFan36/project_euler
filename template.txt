@@ -2,7 +2,7 @@
 
 type Int = u32;
 
-fn solve_problem(input_param: Int) -> Int {
+fn solve_problem(_input_param: Int) -> Int {
     todo!()
 }
 
