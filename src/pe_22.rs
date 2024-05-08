@@ -22,13 +22,16 @@ fn solve_problem() -> Int {
     let mut all_names = String::new();
     f.read_to_string(&mut all_names).expect("Read it to string");
 
-    let mut names = all_names.split(",").collect::<BinaryHeap<&str>>();
+    let mut names = all_names
+        .split(",")
+        .map(|string| &string[1..string.len() - 1])
+        .collect::<BinaryHeap<&str>>();
 
     let mut total = 0;
 
     let mut i = names.len();
     while let Some(name) = names.pop() {
-        total += (i as Int) * name_to_number(&name[1..name.len() - 1]);
+        total += (i as Int) * name_to_number(name);
 
         i -= 1;
     }
